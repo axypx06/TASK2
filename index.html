@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Import Products</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <h2>Import Products</h2>
+    <div class="container">
+
+        <div class="grid-container">
+
+            <div class="grid-item">
+                <h5>Step 1: Select File</h5>
+                <input type="file" id="fileInput" class="file-input" accept=".csv,.json">
+                <br>
+                <small>Supported File Type(s): .CSV, .JSON</small>
+            </div>
+
+            <div class="grid-item">
+                <h5>Step 2: Specify Format</h5>
+                <div class="form-group">
+                    <label for="fileType">File Type</label>
+                    <select id="fileType" class="form-control">
+                        <option>JSON</option>
+                        <option>CSV</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="charEncoding">Character Encoding</label>
+                    <select id="charEncoding" class="form-control">
+                        <option>UTF-8</option>
+                        <option>UTF-16BE</option>
+                        <option>UTF-32BE</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="delimiter">Delimiter</label>
+                    <select id="delimiter" class="form-control">
+                        <option>comma</option>
+                        <option>semicolon</option>
+                    </select>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" id="hasHeader" class="form-check-input">
+                    <label for="hasHeader" class="form-check-label">Has Header</label>
+                </div>
+            </div>
+
+           
+            <div class="grid-item grid-full">
+                <h5>Step 3: Display Handling</h5>
+                <div>Available Fields</div>
+                <div class="select-lists">
+                    <select multiple id="availableFields" class="form-control"></select>
+                    <div class = "button-group">
+                        <button onclick="moveToDisplayed()" class="btn btn-secondary">&gt;&gt;</button>
+                        <button onclick="moveToAvailable()" class="btn btn-secondary">&lt;&lt;</button>
+                    </div>
+                    <select multiple id="displayedFields" class="form-control"></select>
+                </div>
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button onclick="next()" class="btn" >Next</button>
+            <button onclick="cancel()" class="btn btn-secondary" >Cancel</button>
+          </div>
+          
+    </div>
+
+    <div id="productListPage" class="container" style="display: none;">
+        <h3 class="product-list-heading">Product List</h3>
+        <table id="productListTable" class="table table-striped mt-4">
+            <thead class="thead-dark"></thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <script src="./index.js"></script>
+</body>
+</html>
